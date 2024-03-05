@@ -1,0 +1,139 @@
+All Products
+<div>
+  <button class="btn btn-success" (click)="openModal()">Add New Product</button>
+</div>
+<table>
+  <thead>
+    <tr>
+      <th>#</th>
+      <th>Product Name</th>
+      <th>MRP</th>
+      <th>DP</th>
+      <th>STATUS</th>
+      <th>ACtion</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let i of ProductData">
+      <td></td>
+      <td>{{ i.id }}</td>
+      <td>{{ i.name }}</td>
+      <td>{{ i.mrp }}</td>
+      <td>{{ i.dp }}</td>
+      <td>{{ i.status }}</td>
+
+      <td>
+        <button class="btn btn-primary">
+          <span class="glyphicon glyphicon-pencil"></span>&nbsp; Edit
+        </button>
+        <button class="btn btn-danger">
+          <span class="glyphicon glyphicon-trash"></span>&nbsp; Remove
+        </button>
+      </td>
+    </tr>
+
+    <tr></tr>
+  </tbody>
+</table>
+
+<!-- The Modal -->
+<div class="modal" id="myModal">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <!-- Modal Header -->
+      <div class="modal-header">
+        <h4 class="modal-title">Modal Heading</h4>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          (click)="closeModal()"
+        ></button>
+      </div>
+
+      <!-- Modal body -->
+      <div class="modal-body">
+        <form [formGroup]="updateForm" (ngSubmit)="updateForms(updateForm)">
+          <div class="form-group mb-3 mt-3">
+            <label for="name">Name:</label>
+            <input
+              type="name"
+              class="form-control"
+              formControlName="name"
+              id="name"
+              placeholder="Enter Name"
+              name="name"
+              required
+            />
+          </div>
+          <div
+            style="color: red"
+            *ngIf="
+              updateForm.get('name')?.invalid && updateForm.get('name')?.touched
+            "
+          >
+            <div>Name is required</div>
+          </div>
+          <div class="form-group mb-3 mt-3">
+            <label for="productDesc">Name:</label>
+            <input
+              type="textarea"
+              class="form-control"
+              formControlName="productDesc"
+              id="productDesc"
+              placeholder="Enter Description"
+              name="productDesc"
+            />
+          </div>
+          <div class="form-group mb-3 mt-3">
+            <label for="mrp">Name:</label>
+            <input
+              type="textarea"
+              class="form-control"
+              formControlName="mrp"
+              id="mrp"
+              placeholder="Enter Description"
+              name="mrp"
+            />
+          </div>
+          <div class="form-group mb-3 mt-3">
+            <label for="dp">Name:</label>
+            <input
+              type="textarea"
+              class="form-control"
+              formControlName="dp"
+              id="dp"
+              placeholder="Enter Description"
+              name="dp"
+            />
+          </div>
+          <div class="form-group mb-3 mt-3">
+            <label for="price">Name:</label>
+            <input
+              type="textarea"
+              class="form-control"
+              formControlName="productDesc"
+              id="price"
+              placeholder="Enter Description"
+              name="price"
+            />
+          </div>
+
+          <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+      </div>
+
+      <!-- Modal footer -->
+      <div class="modal-footer">
+        <button
+          type="button"
+          class="btn btn-danger"
+          data-bs-dismiss="modal"
+          (click)="closeModal()"
+        >
+          Close
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
